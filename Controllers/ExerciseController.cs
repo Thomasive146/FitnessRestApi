@@ -1,6 +1,7 @@
 ﻿using FitnessRestApi.Data;
 using FitnessRestApi.Models;
 using FitnessRestApi.Models.Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,6 +19,7 @@ namespace FitnessRestApi.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<List<Exercise>>> GetAllExercises(int pageNumber = 1, int pageSize = 1)
         {
             if (pageNumber <= 0) pageNumber = 1;
